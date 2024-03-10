@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.json());
+app.use(cors);
 
 async function fetchPdfToText(pdf) {
 
@@ -41,6 +42,7 @@ app.post("/api", async (req, res) => {
     const text = await fetchPdfToText(req.body.url);
     const summary = await summarize(text);
     res.json({ message: summary.choices[0].message.content });
+    return {};
   });
 
   

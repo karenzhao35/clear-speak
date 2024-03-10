@@ -16,7 +16,8 @@ function App() {
   
   const fetchInfo = () => { 
     return axios.post(serverURL) 
-             .then((response) => setDisplay(response.data.message));
+             .then((response) => {setDisplay(response.data.message)
+              console.log("Hello front end")});
   }
   
   React.useEffect(() => {
