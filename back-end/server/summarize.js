@@ -2,9 +2,9 @@ const OpenAI = require("openai");
 require('dotenv').config()
 const ai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-async function summarize() {
+async function summarize(text) {
     
-    let prompt = "Please tell me about sharks";
+    let prompt = "Please summarize this text and add headers: " + text;
     const completion = await ai.chat.completions.create({
         messages: [
           {

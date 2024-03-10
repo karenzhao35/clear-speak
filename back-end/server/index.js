@@ -1,4 +1,6 @@
+const summarize = require('./summarize');
 const express = require("express");
+require('dotenv').config()
 
 
 const PORT = process.env.PORT || 3001;
@@ -14,7 +16,7 @@ const data = {
   "name": "result.txt"
 }
 
-function fetchPdfToJson() {
+function fetchPdfToText() {
   fetch('https://api.pdf.co/v1/pdf/convert/to/text-simple', {
   method: 'POST',
   headers: {
@@ -28,9 +30,9 @@ function fetchPdfToJson() {
   .then(response => console.log(JSON.stringify(response)))
 }
 
-app.get("/api", (req, res) => {
-    fetchPdfToJson();
-    res.json({ message: "Hello from server!" });
+app.get("/api", async (req, res) => {
+    const summary = await summarize(fetchPdfToText());
+    res.json({ message: summary });
   });
 
   
