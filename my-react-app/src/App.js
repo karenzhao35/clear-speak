@@ -73,7 +73,10 @@ function App() {
 
             <p>{message2}</p>
           </div>
-          <div className='child2'></div>
+          <div className='child2'>
+            <div className="text-title">Summarized Text</div>
+            <div className="text-box"></div>
+          </div>
         </div>
       </div>
     </div>

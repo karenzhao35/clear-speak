@@ -37,6 +37,10 @@ import LinearGradient from react-native-linear-gradient
   height: 700px;
   border-top-right-radius: 4rem;
   border-bottom-right-radius: 4rem;
+  align-items: center;
+  justify-content:baseline;
+  flex-direction: column;
+  display: flex;
 }
 
 .logo-header {
@@ -91,6 +95,18 @@ import LinearGradient from react-native-linear-gradient
 }
 
 
-.box {
-  
+.text-box {
+  background: rgba(255,255,255,0.5);
+  width: 900px;
+  height: 550px;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.text-title {
+  font-weight: 700;
+  font-size: larger;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
