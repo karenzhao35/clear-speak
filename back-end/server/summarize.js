@@ -4,12 +4,12 @@ const ai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 async function summarize(text) {
     
-    let prompt = "Please summarize this text and add headers: " + text;
+    let prompt = "Please give a thorough summary of this text: " + text;
     const completion = await ai.chat.completions.create({
         messages: [
           {
             role: "system",
-            content: "You are a helpful assistant designed to ouput in Markdown format with headings.",
+            content: "You are a helpful assistant designed to ouput consistent results in Markdown format with headings.",
           },
           { role: "user", content: prompt },
         ],
