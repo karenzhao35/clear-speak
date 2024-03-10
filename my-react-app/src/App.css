@@ -145,3 +145,11 @@ form {
   font-size: small;
   margin-bottom: 0.5rem;
 }
+
+.summary-text{
+  font-size: 20px; /* Set font size to 20px */
+  padding-top: 25px; /* Add extra padding of 20px on the top */
+  padding-right: 10px; /* Add padding of 10px on the right */
+  padding-bottom: 10px; /* Add padding of 10px on the bottom */
+  padding-left: 10px; /* Add padding of 10px on the left */
+}

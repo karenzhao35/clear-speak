@@ -50,10 +50,10 @@ async function fetchPdfToText(pdf) {
 }
 
 app.post("/api", async (req, res) => {
-    const text = await fetchPdfToText(req.body.url);
-    const summary = await summarize(text);
-    res.json({ message: summary.choices[0].message.content });
-  });
+  const text = await fetchPdfToText(req.body.url);
+  const summary = await summarize(text);
+  res.json({ message: summary.choices[0].message.content });
+});
   
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

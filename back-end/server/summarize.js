@@ -16,8 +16,8 @@ async function summarize(text) {
         model: "gpt-3.5-turbo-1106",
       });
   
-
     return completion;
+    
 }
 
 module.exports = summarize;
