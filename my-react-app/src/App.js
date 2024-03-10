@@ -23,7 +23,6 @@ function App() {
       .then((data) => setData(data.message));
   }, []);
 
-
   return (
     <div className="App">
       <div className="App-background">
@@ -49,5 +48,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
