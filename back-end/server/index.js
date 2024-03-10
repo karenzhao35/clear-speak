@@ -8,13 +8,12 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-app.use(cors());
-
+app.use(express.json());
 
 async function fetchPdfToText(pdf) {
 
   const data = {
-    "url": "https://www.ohchr.org/sites/default/files/UDHR/Documents/UDHR_Translations/eng.pdf",
+    "url": pdf,
     "lang": "eng",
     "inline": true,
     "pages": "0-",
@@ -39,7 +38,7 @@ async function fetchPdfToText(pdf) {
 }
 
 app.post("/api", async (req, res) => {
-    const text = await fetchPdfToText(req);
+    const text = await fetchPdfToText(req.body.url);
     const summary = await summarize(text);
     res.json({ message: summary.choices[0].message.content });
   });
