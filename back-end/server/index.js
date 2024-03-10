@@ -34,7 +34,7 @@ async function fetchPdfToText(pdf) {
   return answer;
 }
 
-app.get("/api", async (req, res) => {
+app.post("/api", async (req, res) => {
     const text = await fetchPdfToText(req);
     const summary = await summarize(text);
     res.json({ message: summary.choices[0].message.content });
