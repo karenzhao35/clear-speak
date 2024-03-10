@@ -1,14 +1,18 @@
 const summarize = require('./summarize');
 const express = require("express");
 require('dotenv').config()
+var cors = require('cors')
 
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+app.use(cors());
+
 
 async function fetchPdfToText(pdf) {
+
   const data = {
     "url": "https://www.ohchr.org/sites/default/files/UDHR/Documents/UDHR_Translations/eng.pdf",
     "lang": "eng",

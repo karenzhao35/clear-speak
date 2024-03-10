@@ -9,23 +9,20 @@ import './App.css';
 
 function App() {
   const [url, setURL] = React.useState("");
+  const [display, setDisplay] = React.useState("");
   const ref = useRef();
-  
-  // const fetchInfo = () => { 
-  //   return axios.get(url) 
-  //            .then((response) => setResponse(response.data.));
-  // }
-  
-  // useEffect(() => { 
-  //       fetchInfo(); 
-  // }, [])
 
-  // const handleClick = (e) => {
-  //   ref.current.click()
-  // }
+  const serverURL = "http://localhost:3001/api"
+  
+  const fetchInfo = () => { 
+    return axios.post(serverURL) 
+             .then((response) => setDisplay(response.data.message));
+  }
+  
+  React.useEffect(() => {
+    fetchInfo(); 
+  }, [])
 
-  
-  
   const handleClick = (e) => {
     var inputText = document.getElementById('textInput').value;
     setURL(inputText);
@@ -33,7 +30,6 @@ function App() {
 
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const [message, setMessage] = useState("");
   const [message2, setMessage2] = useState("");
 
 
@@ -48,11 +44,11 @@ function App() {
   }
 
 
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+  // React.useEffect(() => {
+  //   fetch("/api")
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data.message));
+  // }, []);
 
   return (
     <div className="App">
