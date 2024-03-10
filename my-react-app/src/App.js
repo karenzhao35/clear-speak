@@ -10,7 +10,10 @@ import './App.css';
 function App() {
   const [url, setURL] = React.useState("");
   const [display, setDisplay] = React.useState("");
+  const [textbox, setBox] = React.useState(false);
   const ref = useRef();
+
+  var inputText = "";
 
   const serverURL = "http://localhost:3001/api"
   
@@ -36,11 +39,10 @@ function App() {
     setURL(inputText);
   }
 
-  const [message2, setMessage2] = useState("");
-
-  const summarizeFunction = () => {
-    setMessage2('Hello World2');
+  const onClick = (e) => {
+    setBox(true);
   }
+  
 
   return (
     <div className="App">
@@ -53,25 +55,23 @@ function App() {
             </div>
             <div className='catchphrase'>Condense & Comprehend Knowledge</div>
 
-{/* 
-            <button onClick={handleClick} className="upload-button">
-              <img src={upload_image}/> Upload File
-            </button> 
-            <input ref={ref} type="file" accept=".pdf" style={{ display: 'none'}} 
-              onChange={handleFileChange} /> */}
+            <div className='note'>URL must be a link to a PDF</div>
+            {
+              textbox == false &&
+              <button onClick={onClick} className="upload-button">
+                <img src={upload_image}/> Upload URL
+              </button> 
+            }
 
-            <button onClick={handleClick} className="upload-button">
-              <img src={upload_image}/> Upload URL
-            </button> 
-            <input ref={ref} type="text" id="textInput" /* style={{ display: 'none'}}*/ /> 
+            {
+              textbox == true &&
+              <input ref={ref} className="text-field" type="text" id="textInput"></input>
+            }
 
-
-            <button onClick={summarizeFunction} className="summarize-button">
+            <button onClick={handleClick} className="summarize-button">
               <img src={summarize_image}/> Summarize
-            </button>
+            </button> 
 
-
-            <p>{message2}</p>
           </div>
           <div className='child2'>
             <div className="text-title">Summarized Text</div>
