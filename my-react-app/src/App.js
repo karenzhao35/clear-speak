@@ -11,7 +11,6 @@ function App() {
       .then((data) => setData(data.message));
   }, []);
 
-  
   return (
     <div className="App">
       <header className="App-header">
@@ -21,5 +20,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
