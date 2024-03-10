@@ -8,8 +8,19 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+var whitelist = ['http://localhost:3000/']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
 app.use(express.json());
-app.use(cors);
+app.use(cors());
 
 async function fetchPdfToText(pdf) {
 
@@ -42,9 +53,7 @@ app.post("/api", async (req, res) => {
     const text = await fetchPdfToText(req.body.url);
     const summary = await summarize(text);
     res.json({ message: summary.choices[0].message.content });
-    return {};
   });
-
   
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

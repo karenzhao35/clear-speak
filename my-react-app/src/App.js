@@ -15,41 +15,32 @@ function App() {
   const serverURL = "http://localhost:3001/api"
   
   const fetchInfo = () => { 
-    return axios.post(serverURL) 
-             .then((response) => {setDisplay(response.data.message)
-              console.log("Hello front end")});
+    return axios({
+      method: "POST",
+      url: serverURL,
+      headers: { 'Content-Type': 'application/json;charset=UTF-8', "Access-Control-Allow-Origin": "*", "Accept": "application/json" },
+      data: {
+          url : url
+      }
+    }) 
+             .then((response) => setDisplay(response.data.message))
+             .catch(error => console.log(error));
   }
   
   React.useEffect(() => {
     fetchInfo(); 
-  }, [])
+  }, [url])
 
   const handleClick = (e) => {
     var inputText = document.getElementById('textInput').value;
     setURL(inputText);
   }
 
-  const [selectedFile, setSelectedFile] = useState(null);
-
   const [message2, setMessage2] = useState("");
-
-
-  // const handleFileChange = (event) => {
-  //   const file = event.target.files[0];
-  //   setSelectedFile(file);
-  // };
-
 
   const summarizeFunction = () => {
     setMessage2('Hello World2');
   }
-
-
-  // React.useEffect(() => {
-  //   fetch("/api")
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data.message));
-  // }, []);
 
   return (
     <div className="App">
@@ -78,6 +69,8 @@ function App() {
             <button onClick={summarizeFunction} className="summarize-button">
               <img src={summarize_image}/> Summarize
             </button>
+
+
             <p>{message2}</p>
           </div>
           <div className='child2'></div>
