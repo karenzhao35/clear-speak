@@ -10,7 +10,7 @@ const app = express();
 
 async function fetchPdfToText(pdf) {
   const data = {
-    "url": "https://www.ohchr.org/sites/default/files/UDHR/Documents/UDHR_Translations/eng.pdf",
+    "url": pdf,
     "lang": "eng",
     "inline": true,
     "pages": "0-",
