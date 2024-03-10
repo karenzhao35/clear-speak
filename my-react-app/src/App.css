@@ -60,6 +60,7 @@ import LinearGradient from react-native-linear-gradient
   align-items: center;
   justify-content: center;
   margin-top: 10rem;
+  margin-bottom: 2rem;
   color: #4F438B;
   font-family: "Roboto", sans-serif;
   font-style: normal;  
@@ -90,11 +91,6 @@ import LinearGradient from react-native-linear-gradient
 }
 
 
-
-.summarize-header {
-
-}
-
-.translate-header {
-
+.box {
+  
 }

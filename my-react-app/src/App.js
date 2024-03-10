@@ -1,21 +1,52 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
+// import {GoogleAuth} from "google-auth-library";
+// import google from "googleapis";
 import neswpaper_image from './newspaper.svg';
 import upload_image from './cloud-upload.svg'
 import summarize_image from './pencil.svg'
+import axios from 'axios';
 import './App.css';
 
 function App() {
-  const [data, setData] = React.useState(null);
+  const [url, setURL] = React.useState("");
+  const ref = useRef();
+  
+  // const fetchInfo = () => { 
+  //   return axios.get(url) 
+  //            .then((response) => setResponse(response.data.));
+  // }
+  
+  // useEffect(() => { 
+  //       fetchInfo(); 
+  // }, [])
+
+  // const handleClick = (e) => {
+  //   ref.current.click()
+  // }
+
+  
+  
+  const handleClick = (e) => {
+    var inputText = document.getElementById('textInput').value;
+    setURL(inputText);
+  }
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const [message, setMessage] = useState("");
   const [message2, setMessage2] = useState("");
 
-  const uploadFunction = () => {
-    setMessage('Hello World');
-  }
+
+  // const handleFileChange = (event) => {
+  //   const file = event.target.files[0];
+  //   setSelectedFile(file);
+  // };
+
 
   const summarizeFunction = () => {
     setMessage2('Hello World2');
   }
+
 
   React.useEffect(() => {
     fetch("/api")
@@ -33,10 +64,20 @@ function App() {
               <div className='logo-text'>ClearSpeak</div>
             </div>
             <div className='catchphrase'>Condense & Comprehend Knowledge</div>
-            <button onClick={uploadFunction} className="upload-button">
+
+{/* 
+            <button onClick={handleClick} className="upload-button">
               <img src={upload_image}/> Upload File
             </button> 
-            <p>{message}</p>
+            <input ref={ref} type="file" accept=".pdf" style={{ display: 'none'}} 
+              onChange={handleFileChange} /> */}
+
+            <button onClick={handleClick} className="upload-button">
+              <img src={upload_image}/> Upload URL
+            </button> 
+            <input ref={ref} type="text" id="textInput" /* style={{ display: 'none'}}*/ /> 
+
+
             <button onClick={summarizeFunction} className="summarize-button">
               <img src={summarize_image}/> Summarize
             </button>
@@ -49,3 +90,4 @@ function App() {
   );
 }
 export default App;
+
