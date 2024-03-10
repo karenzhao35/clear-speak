@@ -16,8 +16,8 @@ const data = {
   "name": "result.txt"
 }
 
-function fetchPdfToText() {
-  fetch('https://api.pdf.co/v1/pdf/convert/to/text-simple', {
+async function fetchPdfToText(pdf) {
+  const answer = await fetch(pdf, {
   method: 'POST',
   headers: {
   'Accept': 'application/json',
@@ -27,11 +27,15 @@ function fetchPdfToText() {
   body: JSON.stringify(data)
   })
   .then(response => response.json())
-  .then(response => console.log(JSON.stringify(response)))
+  .then(response => {
+    return response.body;
+  })
+  return answer;
 }
 
 app.get("/api", async (req, res) => {
-    const summary = await summarize(fetchPdfToText());
+    const text = await fetchPdfToText(req);
+    const summary = await summarize(text);
     res.json({ message: summary });
   });
 
@@ -39,3 +43,6 @@ app.get("/api", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
+
+
+
