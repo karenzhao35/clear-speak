@@ -1,3 +1,5 @@
+![](app.png)
+
 ## **Inspiration**
 
 Regardless of who they are or where they come from, education is a right for everybody. However, there is much that needs to be done to bridge inequities that exist within education. It can be quite daunting to read pages upon pages of huge chunks of monotonous text - even more so for people with learning disabilities or accessibility needs, or who aren't as fluent in English. We wanted to be able to extract key information from long documents in a way that is more accessible and digestible for the user.
@@ -28,7 +30,7 @@ To never underestimate how tedious frontend can be
 
 Implementing text augmentation features, like allowing users to pick a font, increase and decrease font size, choose their desired colour contrast, etc. We'd also really like to incorporate a text-to-speech feature and a language-translating feature to increase accessibility!
 
-# handling upload
+# Handling uploads
 
 To handle uploading a PDF file from your frontend React app to your backend Express.js server and then manipulating it, you'll need to set up a few components and endpoints on both the frontend and backend sides. Here's a basic structure and technique to achieve this:
 
