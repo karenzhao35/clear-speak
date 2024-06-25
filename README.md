@@ -1,5 +1,5 @@
 ![](app.png)
-
+# cmd-f 2024 project submission 
 ## **Inspiration**
 
 Regardless of who they are or where they come from, education is a right for everybody. However, there is much that needs to be done to bridge inequities that exist within education. It can be quite daunting to read pages upon pages of huge chunks of monotonous text - even more so for people with learning disabilities or accessibility needs, or who aren't as fluent in English. We wanted to be able to extract key information from long documents in a way that is more accessible and digestible for the user.
